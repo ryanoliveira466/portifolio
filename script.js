@@ -1,5 +1,7 @@
 //Header
 
+
+
 let buttonsHeader = document.querySelectorAll('.buttonsHeader')
 buttonsHeader.forEach(element => {
     element.addEventListener('mouseover', function () {
@@ -48,6 +50,7 @@ async function fetchRepos() {
         let meDivHeight = document.getElementById('me').offsetHeight
 
         let style = document.createElement("style");
+        style.id = "styleAniDiv"
         style.innerHTML = `
         @keyframes divBack {
             0% {
@@ -300,6 +303,7 @@ async function fetchRepos() {
         let meDivHeight = document.getElementById('me').offsetHeight
 
         let style = document.createElement("style");
+        style.id = "styleAniDiv"
         style.innerHTML = `
         @keyframes divBack {
             0% {
@@ -570,7 +574,9 @@ function updatePath() {
     });
 }
 
-// Run the update when the page loads or window resizes
+
+
+
 window.addEventListener('resize', updatePath); // Recalculate if the window is resized
 window.addEventListener('load', updatePath);   // Initial calculation when the page loads
 

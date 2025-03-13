@@ -204,7 +204,7 @@ header {
 	text-align: center;
 	box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 	width: 100%;
-	z-index: 9999;
+	z-index: 40;
 	position: fixed;
 	/*transition: transform 0.3s ease-in-out;	 Pop up Header */
 }
@@ -514,7 +514,7 @@ header button {
 
 #github {
 	overflow: hidden;
-	transition: all 0s ease;
+	transition: all 1s ease;
 }
 
 #loadingScreen{
@@ -543,7 +543,9 @@ header button {
 	animation: opacityLoadingScreen 1s ease-in forwards;
 }
 
-
+.motion{
+	position: absolute;
+}
 
 #motion-demo {
 	width: 20px;
