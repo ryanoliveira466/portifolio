@@ -160,6 +160,14 @@ async function fetchRepos() {
                 img.src = 'img/RepositoryLogo/womanIcon.png';
             }
 
+             else if (repo.name == "UX-UI") {
+                img.src = 'img/RepositoryLogo/uxui.jpg';
+            }
+
+             else if (repo.name == "JUnit-TestesUnitarios") {
+                img.src = 'img/RepositoryLogo/junit.jpg';
+            }
+
 
 
 
