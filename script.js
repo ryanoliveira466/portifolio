@@ -26,7 +26,7 @@ buttonsHeader.forEach(element => {
 
 document.querySelectorAll(".buttonsHeader").forEach(button => {
     button.addEventListener("click", function () {
-        let target = this.getAttribute("title");
+        let target = this.getAttribute("aria-labelledby");
         if (target == "#aboutSection") {
             window.scrollTo(0, 0)
         }
@@ -46,133 +46,7 @@ async function fetchRepos() {
     const response = await fetch("https://api.github.com/users/ryanoliveira466/repos");
     if (!response.ok) {
 
-        let gitHubDivHeight = document.getElementById('github').offsetHeight
-        let meDivHeight = document.getElementById('me').offsetHeight
-
-        let style = document.createElement("style");
-        style.id = "styleAniDiv"
-        style.innerHTML = `
-        @keyframes divBack {
-            0% {
-            
-
-                opacity: 0;
-                height: 0px;
-                transform: translateY(-100vh);
-                 
-            }
-
-            90%{
-            opacity: 0;
-            }
-
-            100% {
-                 
-                opacity: 1;
-                height: ${meDivHeight}px;
-                transform: translateY(0vh);
-                 
-            }
-        }
-  
-        @keyframes divGo {
-            0% {
-                
-                opacity: 1;
-                height: ${meDivHeight}px;
-                transform: translateY(0vh);
-            }
-
-            10%{
-            opacity: 0;
-            }
-
-
-            
-
-            100% {
-               
-                opacity: 0;
-                height: 0px;
-                transform: translateY(-100vh);
-                 
-            }
-        }
-  
-        .divGo {
-            animation: divGo 3s ease-in-out forwards;
-        }
-  
-        .divBack {
-            animation: divBack 3s ease-in-out forwards;
-        }
-  
-        @keyframes divBackGit {
-            0% {
-  
-               
-                opacity: 0;
-                 height: 0px;
-                transform: translateX(-100vw);
-                 
-            }
-
-
-            90%{
-            opacity: 0;
-            }
-
-            100% {
-                  
-                opacity: 1;
-                 height: ${gitHubDivHeight}px;
-                transform: translateX(0vw);
-                 
-            }
-        }
-  
-        @keyframes divGoGit {
-            0% {
-                 
-                height: ${gitHubDivHeight}px;
-                opacity: 1;
-                transform: translateX(0vw);
-                 
-            }
-
-
-            10%{
-            opacity: 0;
-            }
-
-            100% {
-                
-                 
-                opacity: 0;
-                height: 0px;
-                transform: translateX(-100vw);
-                 
-            }
-        }
-  
-        .divGoGit {
-            animation: divGoGit 3s ease-in-out forwards;
-        }
-  
-        .divBackGit {
-            animation: divBackGit 3s ease-in-out forwards;
-        }
-  `;
-
-        document.head.appendChild(style);
-
-        document.getElementById('github').style.transform = 'translateX(-100vw)'
-        document.getElementById('github').style.height = '0px'
         document.getElementById('loadingScreen').classList.add('opacityLoadingScreen')
-        setTimeout(() => {
-            document.getElementById('github').style.transition = 'all 1s ease'
-        }, 50);
-
         return false;
     }
 
@@ -297,141 +171,14 @@ async function fetchRepos() {
             repoList.appendChild(link);
         });
 
-
-
-        let gitHubDivHeight = document.getElementById('github').offsetHeight
-        let meDivHeight = document.getElementById('me').offsetHeight
-
-        let style = document.createElement("style");
-        style.id = "styleAniDiv"
-        style.innerHTML = `
-        @keyframes divBack {
-            0% {
-            
-
-                opacity: 0;
-                height: 0px;
-                transform: translateY(-100vh);
-                 
-            }
-
-            90%{
-            opacity: 0;
-            }
-
-            100% {
-                 
-                opacity: 1;
-                height: ${meDivHeight}px;
-                transform: translateY(0vh);
-                 
-            }
-        }
-  
-        @keyframes divGo {
-            0% {
-                
-                opacity: 1;
-                height: ${meDivHeight}px;
-                transform: translateY(0vh);
-            }
-
-            10%{
-            opacity: 0;
-            }
-
-
-            
-
-            100% {
-               
-                opacity: 0;
-                height: 0px;
-                transform: translateY(-100vh);
-                 
-            }
-        }
-  
-        .divGo {
-            animation: divGo 3s ease-in-out forwards;
-        }
-  
-        .divBack {
-            animation: divBack 3s ease-in-out forwards;
-        }
-  
-        @keyframes divBackGit {
-            0% {
-  
-               
-                opacity: 0;
-                 height: 0px;
-                transform: translateX(-100vw);
-                 
-            }
-
-
-            90%{
-            opacity: 0;
-            }
-
-            100% {
-                  
-                opacity: 1;
-                 height: ${gitHubDivHeight}px;
-                transform: translateX(0vw);
-                 
-            }
-        }
-  
-        @keyframes divGoGit {
-            0% {
-                 
-                height: ${gitHubDivHeight}px;
-                opacity: 1;
-                transform: translateX(0vw);
-                 
-            }
-
-
-            10%{
-            opacity: 0;
-            }
-
-            100% {
-                
-                 
-                opacity: 0;
-                height: 0px;
-                transform: translateX(-100vw);
-                 
-            }
-        }
-  
-        .divGoGit {
-            animation: divGoGit 3s ease-in-out forwards;
-        }
-  
-        .divBackGit {
-            animation: divBackGit 3s ease-in-out forwards;
-        }
-  `;
-
-        document.head.appendChild(style);
-
-        document.getElementById('github').style.transform = 'translateX(-100vw)'
-        document.getElementById('github').style.height = '0px'
         document.getElementById('loadingScreen').classList.add('opacityLoadingScreen')
-        setTimeout(() => {
-            document.getElementById('github').style.transition = 'all 1s ease'
-        }, 50);
 
         let buttonsGit = document.querySelectorAll('.contentImgGit');
 
         buttonsGit.forEach(element => {
             element.addEventListener('mouseover', function () {
                 let audio = new Audio("./sound/minimal-pop-click-ui-1-198301.mp3");
-        
+
                 audio.play().catch(error => {
                     console.error("Audio play failed:", error);
                 });
@@ -442,7 +189,7 @@ async function fetchRepos() {
 
 
 
- 
+
 
 
 
@@ -479,31 +226,59 @@ buttonPag.forEach(element => {
 
 
         this.classList.add("bg-white")
+        this.classList.add('opacity-50')
         window.scrollTo(0, 0)
 
-        if (element.id == "pagAbout") {
 
-            document.getElementById('github').classList.remove('divBackGit')
-            document.getElementById('github').classList.add('divGoGit')
 
-            document.getElementById('me').classList.remove('divGo')
-            document.getElementById('me').classList.add('divBack')
+
+
+        if (element.id === "pagAbout") {
+            github.classList.remove('divBackGit', 'divGoGit');
+            github.classList.add('opacity');
+
+            github.addEventListener('animationend', function onAnimationEnd() {
+                github.classList.remove('opacity');
+                github.style.display = 'none';
+
+                me.style.display = 'flex';
+                me.classList.remove('divGo');
+                me.classList.add('divBack');
+
+                //Quando o usuário clica/ ele adiciona a função e depois remove pois se não haverá dois animationed que fazem dar um loop
+                github.removeEventListener('animationend', onAnimationEnd);
+            });
         }
 
-        if (element.id == "pagGit") {
+        if (element.id === "pagGit") {
+            me.classList.remove('divGo', 'divBack');
+            me.classList.add('opacity');
 
-            document.getElementById('github').classList.remove('divGoGit')
-            document.getElementById('github').classList.add('divBackGit')
+            me.addEventListener('animationend', function onAnimationEnd() {
+                me.classList.remove('opacity');
+                me.style.display = 'none';
 
-            document.getElementById('me').classList.remove('divBack')
-            document.getElementById('me').classList.add('divGo')
+                github.style.display = 'flex';
+                github.classList.remove('divGoGit');
+                github.classList.add('divBackGit');
+
+                //Quando o usuário clica/ ele adiciona a função e depois remove pois se não haverá dois animationed que fazem dar um loop
+                me.removeEventListener('animationend', onAnimationEnd);
+            });
         }
+
+
+
+
+
+
 
         const otherBtn = document.querySelectorAll('.pagbtn')
         otherBtn.forEach(button => {
 
             if (button != element) {
                 button.classList.remove("bg-white")
+                button.classList.remove('opacity-50')
             }
         })
 
@@ -519,14 +294,14 @@ buttonPag.forEach(element => {
 
     })
 
-        element.addEventListener('mouseover', function () {
-            let audio = new Audio("./sound/minimal-pop-click-ui-1-198301.mp3");
-    
-            audio.play().catch(error => {
-                console.error("Audio play failed:", error);
-            });
+    element.addEventListener('mouseover', function () {
+        let audio = new Audio("./sound/minimal-pop-click-ui-1-198301.mp3");
+
+        audio.play().catch(error => {
+            console.error("Audio play failed:", error);
         });
-     
+    });
+
 })
 
 //Pagination
@@ -537,15 +312,15 @@ buttonPag.forEach(element => {
 
 let buttonsSound = document.querySelectorAll('.contentImgP, .contentImgL ,.contentImgC');
 
-        buttonsSound.forEach(element => {
-            element.addEventListener('mouseover', function () {
-                let audio = new Audio("./sound/minimal-pop-click-ui-1-198301.mp3");
-        
-                audio.play().catch(error => {
-                    console.error("Audio play failed:", error);
-                });
-            });
+buttonsSound.forEach(element => {
+    element.addEventListener('mouseover', function () {
+        let audio = new Audio("./sound/minimal-pop-click-ui-1-198301.mp3");
+
+        audio.play().catch(error => {
+            console.error("Audio play failed:", error);
         });
+    });
+});
 
 //Sound
 
@@ -581,3 +356,80 @@ window.addEventListener('resize', updatePath); // Recalculate if the window is r
 window.addEventListener('load', updatePath);   // Initial calculation when the page loads
 
 //Footer
+
+
+/* Scroll reveal effects!  */
+const divs = document.querySelectorAll('.fade-in');
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        } else {
+            entry.target.classList.remove('visible'); // Optional, for repeated animation
+        }
+    });
+});
+
+divs.forEach(div => observer.observe(div));
+
+
+
+
+
+const footer = document.getElementById('footer')
+
+const observer2 = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible-op');
+        } else {
+            entry.target.classList.remove('visible-op'); // Optional, for repeated animation
+        }
+    });
+});
+
+observer2.observe(footer)
+
+/* Scroll reveal effects!  */
+
+
+
+
+//SVG
+
+const path = document.getElementById('complexPath');
+        
+// Calculate path length dynamically to apply proper stroke-dasharray
+const pathLength = path.getTotalLength();
+
+// Set the stroke-dasharray and stroke-dashoffset to match the path length
+path.style.strokeDasharray = pathLength;
+path.style.strokeDashoffset = pathLength;
+
+// Function to handle scroll and dynamically draw the path based on scroll position
+function handleScroll() {
+    // Get the scroll position relative to the entire document
+    const scrollY = window.scrollY; // Scroll Boundaries
+    const documentHeight = document.documentElement.scrollHeight; //Full height of the document
+    const windowHeight = window.innerHeight; //User view
+
+    
+
+    // Calculate the scroll percentage
+    const scrollPercentage = (scrollY) / (documentHeight - windowHeight);
+
+   
+    
+
+    // Use scroll percentage to dynamically change the stroke-dashoffset
+    const drawLength = pathLength * scrollPercentage;
+    path.style.strokeDashoffset = pathLength - drawLength; // As the user scrolls down, the path is drawn
+
+    // Optional: If the user scrolls up, the drawing will reverse
+}
+
+// Listen for the scroll event
+window.addEventListener('scroll', handleScroll);
+
+//SVG
