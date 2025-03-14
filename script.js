@@ -144,7 +144,7 @@ async function fetchRepos() {
                 img.src = 'img/RepositoryLogo/frontEnd.jpg';
             }
 
-            else if (repo.name == "localStorage") {
+            else if (repo.name == "backEnd") {
                 img.src = 'img/RepositoryLogo/backend.webp';
             }
 
